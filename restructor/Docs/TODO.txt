@@ -1,0 +1,89 @@
+﻿- a; b => c; d
+  requires different prec on left & right for ;
+  make more normal assignment/scope instead
+
+can use GenericParameterPosition instead of hashtable
+
+
+- make renames safe
+- gotta stop main from being renamed? give it a permanent name / unredef
+
+- revert => to inline syntax
+- deal with functions being added/removed upon editing
+
+- improve / check side effect analysis
+  - collect side effects must do every function only once
+
+- closure implementation: using globals for now, as its simplest? restict function value usage.
+  - clear sflds, for GC
+  - actually analyze minimum vars needed to be freevar
+
+- (1-4)*(1-4)
+  evaluates two sides of * each, should be shared, even if side effecting (with {}).
+  this is essentially rule 2b which is not done yet!
+
+- allow optional type decl on lambdas that are used without a function type context
+
+- order of eval for apply is function first, make sure that is taken into account for side effects.
+
+- type tooltips show last variant typechecked
+  - somehow keep a list of types where needed? or depend on context
+
+- double click on
+  - = to edit whole body
+  - hover over args shows types too
+
+- can we simplify freevar handling? what if in future they need to be objects? escape?
+  - once we do side effects, free vars passed along must be by reference
+
+- divide by 0 checking globally? need global exception handler
+- make sure every access to n.clrt checks for null
+
+- aggressive restruct that removes unused variables and their caller args
+
+- other operators?
+
+- fixme's
+
+- remove/redo Sanity() (very slow)
+- more asserts
+
+- make node use array for memory efficiency? default capacity = 4
+  first profile what uses memory on a large program
+
+
+"Dispatcher processing has been suspended, but messages are still being processed" in DoDragDrop()
+http://social.msdn.microsoft.com/forums/en-US/wpf/thread/d5695ebb-9e68-4ac0-8a09-c68a119e140a
+
+if we ever want to switch from double to float:
+- comments // real
+- using real
+
+
+parse/paste/edit / restruct -> validate -> redogui
+(validate ->) check err -> restruct / run / save exe
+
+
+
+
+
+
+x = v => body		// static function call: could be: v |> x => body
+x = v				// assign: can't be made into: v |> x
+     x => body		// fv
+v |> x => body		// fv + apply
+     `body !			// fv + apply: could be: () |> () => body
+
+x1 = v1 => x2 = v2 => body													// multiple static function calls: could be: v1 |> x1 => v2 |> x2 => body
+																			// or also: (x1, x2) = (v1, v2) => body      or     x1, x2 = v1, v2 => body
+(v1, v2) |> (x1, x2) => body        or       v1, v2 |> x1, x2 => body		// fv + apply
+
+
+
+
+- general case fv must have typed args
+- specific case:
+	v |> fv
+	v |> hof(fv) 
+  so: an apply passes its arg types to the function.. in the case of a hof, it can pass it on.
+  if type checking comes across fv arg with no type, and no arg type passed in, that is an error.

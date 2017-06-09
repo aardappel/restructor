@@ -1,0 +1,17 @@
+<Canvas Height="1052.3622047" Name="svg2822" Width="744.09448819" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<Canvas.Resources>
+		<LinearGradientBrush EndPoint="468.4838,410.45743" MappingMode="Absolute" SpreadMethod="Pad" StartPoint="247.55646,410.45743" x:Key="linearGradient3674" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+			<LinearGradientBrush.GradientStops>
+				<GradientStopCollection>
+					<GradientStop Color="#FFFF0000" Offset="0" />
+					<GradientStop Color="#FF0000FF" Offset="0.5" />
+					<GradientStop Color="#FFFF0000" Offset="1" />
+				</GradientStopCollection>
+			</LinearGradientBrush.GradientStops>
+		</LinearGradientBrush>
+	</Canvas.Resources>
+	<Canvas Name="layer1">
+		<Path Data="M 361.63649 413.47105 C 286.95402 487.56402 231.25689 531.33899 125.36732 561.74201 330.61187 536.02036 436.76308 526.09574 590.67293 558.12564 476.61676 534.57409 424.35402 475.52658 361.63649 413.47105 z" Fill="#000080" Name="path2886" Stroke="#241C1C" StrokeLineJoin="Round" StrokeThickness="16" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />
+		<Path Data="M 361.63649 227.83099 C 287.94435 244.25933 284.42271 394.1501 255.55646 593.08384 343.48181 543.2294 369.37086 516.21129 460.4838 590.67293 433.31084 446.5391 446.43953 271.87046 361.63649 227.83099 z" Fill="{StaticResource linearGradient3674}" Name="path2884" Stroke="#241C1C" StrokeLineJoin="Round" StrokeThickness="16" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />
+	</Canvas>
+</Canvas>
