@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestructorRuntime", "RestructorRuntime\RestructorRuntime.csproj", "{4A4D852B-3887-49A7-A83B-B020C7082C57}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restructor", "Restructor\Restructor.csproj", "{9FDCC979-FA97-47E6-A7BA-E38F8F1B3D79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestructorRuntime", "RestructorRuntime\RestructorRuntime.csproj", "{4A4D852B-3887-49A7-A83B-B020C7082C57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

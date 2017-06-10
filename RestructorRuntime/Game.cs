@@ -1,9 +1,19 @@
-﻿using System;
+﻿// Note: this file uses XNA for minimal game rendering.
+// It is disabled by default because most people won't have it installed, and MS doesn't support
+// it anymore.
+// Enable it by uncommenting the line below, and adding the XNA assembly references to the project.
+
+//#define USE_XNA
+
+using System;
+using real = System.Double;
+
+#if USE_XNA
+
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using real = System.Double;
 
 public class Game : Microsoft.Xna.Framework.Game
 {
@@ -61,4 +71,37 @@ public class Game : Microsoft.Xna.Framework.Game
 
         base.Draw(gameTime);
     }
+
+    public void RenderSprite(string name, real x, real y, real scale, real rot)
+    {
+        Texture2D sprite;
+        if (!textures.TryGetValue(name, out sprite))
+        {
+            sprite = Texture2D.FromStream(GraphicsDevice,
+                new System.IO.StreamReader("..\\..\\Game\\" + name).BaseStream);
+            if (sprite == null) return;
+            textures[name] = sprite;
+        }
+        sb.Draw(sprite, new Vector2((float)x, (float)y), null, Color.White, (float)rot,
+            new Vector2(sprite.Width / 2, sprite.Height / 2), (float)scale, SpriteEffects.None, 0);
+    }
 }
+
+#else
+
+using System.Windows;
+
+public class Game
+{
+    public Game(string title, Action<real> _update, Action<real> _draw) { }
+
+    public void Run()
+    {
+        MessageBox.Show(
+            "This would show a rotating spaceship if you had XNA installed, see top of Game.cs");
+    }
+
+    public void RenderSprite(string name, real x, real y, real scale, real rot) { }
+}
+
+#endif

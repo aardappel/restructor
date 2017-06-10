@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using real = System.Double;
 
 public interface IRestructorCode
@@ -68,15 +66,6 @@ public class Runtime
 
     public static void rendersprite(string name, real x, real y, real scale, real rot)
     {
-        Texture2D sprite;
-        if (!g.textures.TryGetValue(name, out sprite))
-        {
-            sprite = Texture2D.FromStream(g.GraphicsDevice,
-                new System.IO.StreamReader("..\\..\\Game\\" + name).BaseStream);
-            if (sprite == null) return;
-            g.textures[name] = sprite;
-        }
-        g.sb.Draw(sprite, new Vector2((float)x, (float)y), null, Color.White, (float)rot,
-            new Vector2(sprite.Width / 2, sprite.Height / 2), (float)scale, SpriteEffects.None, 0);
+        g.RenderSprite(name, x, y, scale, rot);
     }
 }
